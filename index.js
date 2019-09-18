@@ -36,7 +36,7 @@ function identity(value){
     //Returns value unchanged.
     return value;
 }
-module,exports.identity = identity;
+module.exports.identity = identity;
 /**
  * typeOf: takes any value and returns type of value
  * 
@@ -68,9 +68,6 @@ module.exports.typeOf = typeOf;
  * @param {Number} Number: The number of array elements to return
  
  * @return {Array}New Array: A new array of elements from array parameter
- * @return {Array} Empty Array: Empty Array that is returned if number is negative
- * @return {Any Datatype} First Element of Array: Return if number parameter is not given or not a number.
- * @return {Array} Array Parameter: Return if number parameter is greater than array.length.
  * 
  * 
  */
@@ -112,10 +109,6 @@ module.exports.first = first;
  * @param {Number} Number of array elements to return
  * 
  * @return {Array} Empty array: Empty array that is returned if number is negative or array param is not array
- * @return {any datatype} Last element of array: Returned if number param is not a number
- * @return {Array} Whole array parameter: Returned if number param is greater than array lenght
- * @return {Array} New array: New array of elements starting at end of array param
- * 
  */
  
  function last(array, number){
@@ -160,8 +153,8 @@ module.exports.last = last;
  * @param {array} To loop through to determine the position of index
  * @param {value} index within the array
  * 
- * @return {value} if the value is not within the array will return -1
- * @return {value} the result is the position index within the array
+ * 
+ * @return {value} the result is the position index within the array, if not return -1
  */
  
 
@@ -205,8 +198,8 @@ module.exports.indexOf = indexOf;
  * @param {array} Array where the the function is searching within
  * @param {value} Value is what is being search within the array
  * 
- * @return {value} If the value was found within the array, returns true
- * @return {value} if the value was not found in the array, return false
+ * @return {value} If the value was found within the array, returns true, if not then false
+ * 
  *
  */
 
@@ -252,7 +245,7 @@ function each(collection, action) {
         }
     } return collection;
 }
-module.export.each = each;
+module.exports.each = each;
 
 /**
  * unique: Loops through the array and grab the unique value and remove the duplicates 
@@ -276,7 +269,7 @@ function unique(array){
     // indexOf function on each array element comparing it to the new array
     // if return value of indexOf is negative 1, then push that new element into the new array
  }
-module.export.unique = unique;
+module.exports.unique = unique;
 
 /**
  * filter: calls a function for each element in the array, passing an argument
@@ -306,7 +299,7 @@ function filter(array, test) {
     // if test returns true, for an element, push element to a new array.
     // return the new array
     
-module.export.filter = filter;
+module.exports.filter = filter;
 
 /**
  * reject: call function for each element in the array passing an argument
@@ -326,7 +319,7 @@ function reject(array, test) {
         }
     });
 }
-module.export.reject = reject;
+module.exports.reject = reject;
 
  /**
    * partition: takes an array and a function. uses filter() to create a new array of elements that pass the function, 
