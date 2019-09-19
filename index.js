@@ -67,8 +67,10 @@ module.exports.typeOf = typeOf;
  * @param {Array} Array: The array to return values from
  * @param {Number} Number: The number of array elements to return
  
- * @return {Array}New Array: A new array of elements from array parameter
- * 
+ * @return {Array or first element (of any datatype)} : Returns new array of elements containing the first <number> elements from <array>. 
+ * Otherwise, returns empty array if <number> is negative or array argument input is not an array,
+ * returns first element of array if <number> argument is not given or is NaN, 
+ * or returns whole <array> if <number> is greater than or equal to the length of the arr
  * 
  */
  
@@ -108,7 +110,10 @@ module.exports.first = first;
  * @param {Array} Array to pull elements from
  * @param {Number} Number of array elements to return
  * 
- * @return {Array} Empty array: Empty array that is returned if number is negative or array param is not array
+  * @return {Array or last element (of any datatype)} : Returns new array of <number> elements starting
+ * at end of <array> argument. Otherwise, returns empty array if <number> is negative or <array> argument is not an array,
+ * returns last element of array if <number> is NaN or not provided, or returns whole <array> is <number> is greater than 
+ * or equal to array length.
  */
  
  function last(array, number){
