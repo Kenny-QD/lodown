@@ -222,11 +222,11 @@ function contains(array, value){
 module.exports.contains = contains;
 
 /**
- * each: goes through the <collection is the <collection> is either an array or object it'll for the function for each element
+ * each: tests the datatype and iterates through the collection and perform a given <action>
  * 
- * @param {collection} tests if the collection is an array, if so proceeds with a for loop and call function to each element 
- * @param {collection} Tests if the collection is an object, if so uses for in loop to perform an action on each collective value
- * @param {function} action that gives the element, index, collection
+ * @param {collection} tests the collection if the datatype is an array or an object, if so 
+ * it will proceed to iterate through the collection and call <action> to each element 
+ * @param {action} action that gives the element, index, collection
  * 
  * @return {collection} returns the value (element, index, array)
  */
@@ -424,8 +424,8 @@ module.exports.pluck = pluck;
  * @param {Array or Object} Collection: a collection to iterate through with the given function
  * @param {Function} Function: a function/test to run on given collection elements
  * 
- * @param {Boolean} True: returned if there are no falsey elements in collection or no false returns from function
- * @param {BOolean} False: returned if there are any falsey elements in collection or false returns from function
+ * @return {Boolean} True if there are no falsey elements in collection or no false returns from function
+ * if so False if there are any falsey elements in collection or false returns from function
  */
  
  function every(collection, funct) {
@@ -471,8 +471,8 @@ module.exports.every = every;
  * @param {Array or Object} Collection: a collection to iterate through with the given function
  * @param {Function} Function: a function/test to run on given collection elements
  * 
- * @param {Boolean} True: returned if there are any truthy elements in collection or any true returns from function
- * @param {BOolean} False: returned if there are no truthy elements in collection or no true returns from function
+ * @return {Boolean} True returned if there are any truthy elements in collection or any true returns from function
+ *  if not it will return False if there are no truthy elements in collection or no true returns from function
  */
 
 function some(collection, funct) {
