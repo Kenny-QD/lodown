@@ -222,37 +222,6 @@ function contains(array, value){
 module.exports.contains = contains;
 
 /**
- * each: tests the datatype and iterates through the collection and perform a given <action>
- * 
- * @param {collection} tests the collection if the datatype is an array or an object, if so 
- * it will proceed to iterate through the collection and call <action> to each element 
- * @param {action} action that gives the element, index, collection
- * 
- * @return {collection} returns the value (element, index, array)
- */
- 
-
-function each(collection, action) {
-    // if <collection> is array, use loop to call <function> on elements
-    // function takes element, index, and collection as parameters
-    if (Array.isArray(collection)) {
-        // loop through array
-        for (var i = 0; i < collection.length; i++) {
-            // for each element, call function
-            action(collection[i], i, collection);
-        }
-    }
-    else {
-        // else loop through object
-            // perform action on each collection value, key, and <collection>
-        for (var key in collection) {
-            action(collection[key], key, collection);
-        }
-    } return collection;
-}
-module.exports.each = each;
-
-/**
  * unique: Loops through the array and grab the unique value and remove the duplicates 
  * stores into a new array binding to be returned
  * 
