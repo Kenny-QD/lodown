@@ -1,5 +1,5 @@
 {
-  "name": "lodown-kennyqd",
+  "name": "lodown-kenny-qd",
   "version": "1.0.0",
   "description": "my first npm library",
   "main": "index.js",
@@ -23,7 +23,7 @@
     "chai": "^4.2.0",
     "i": "^0.3.6",
     "istanbul": "^0.4.5",
-    "mocha": "^6.2.0",
-    "sinon": "^7.4.2"
+    "mocha": "^6.2.2",
+    "sinon": "^7.5.0"
   }
 }
