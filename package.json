@@ -1,6 +1,6 @@
 {
-  "name": "lodown-kenny-qd",
-  "version": "1.0.0",
+  "name": "lodown-kennyqd",
+  "version": "1.0.2",
   "description": "my first npm library",
   "main": "index.js",
   "directories": {

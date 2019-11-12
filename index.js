@@ -34,10 +34,11 @@ let identity = (value) => value;
 module.exports.identity = identity;
 
 /**
- * typeof: will determine the value and return the value's datatype.
+ * typeof: will check the value and return the value's datatype.
  * 
  * @param {value} : The value of what datatype that will be determined
- * @return {string}: Datatype of the value
+ * 
+ * @return {string}: Datatype of the value as a "string"
  * 
  */
  
@@ -55,18 +56,15 @@ module.exports.identity = identity;
  
  /**
   * first: takes an array and a number,
-  * if it is not a number or an array, it will return an empty array
-  * if the number is not given, it'll return the first element in the array
-  * returns the first element of the array
+  * if there is no array or number it will return an empty array instead
+  * but if there is an array it will return the first value of the array
   * 
-  * @param {array} : The array to return the values from.
-  * @param {number} : The number of array elements to return.
+  * @param {array} : Array to be iterated
   * 
-  * @return {Array or first element (of any datatype)} : 
-  * Returns new array of elements containing the first <number> elements from <array>. 
-  * Otherwise, returns empty array if <number> is negative or array argument input is not an array,
-  * returns first element of array if <number> argument is not given or is NaN, 
-  * or returns whole <array> if <number> is greater than or equal to the length of the arr
+  * @param {number} : Number of elements
+  * 
+  * @return {Array or first element (of any datatype)} 
+  * Will return a new array of the first value in the array
   * 
   */
  
@@ -88,11 +86,13 @@ module.exports.identity = identity;
   * will return the last index array if there is no number.
   * will return the whole array if the number is greater than the array
   * 
-  * @param {array} : Array to pull elements from
+  * @param {array} : Array to be iterated
+  * 
   * @param {number} : Number of array to return
   * 
-  * @return {Array or last element of array} Will return the last element of array
-  * if there is no number provided then it will proceed to return the last index element of array
+  * @return {Array}
+  * Will return a new array with the last element in the array
+  * 
   */
   
   let last=(array,num) => {
@@ -112,11 +112,12 @@ module.exports.identity = identity;
   /**
    * indexof: Will check the index placement of an array.
    * 
-   * @param {array}: Loops through to determine the position of array.
-   * @param {value}: index within the array
+   * @param {array}: Loops through to check the position of array.
    * 
-   * @return {value}: the result is the position index within the array, 
-   * if not return -1
+   * @param {value}: any given value
+   * 
+   * @return {i or -1}: will return the index of the element 
+   * if not will return -1
    */
    
    let indexOf = (array, value) => {
@@ -131,9 +132,10 @@ module.exports.identity = identity;
 module.exports.indexOf = indexOf;
 
 /**
- * contains: Will determine the if the value we're looking for is found.
+ * contains: Will check the if the value we're looking for is found and will return a boolean of its results.
  * 
- * @param {array}: Array where the value is being searched within
+ * @param {array}: Array where the value is being looked for.
+ * 
  * @param {value}: Value is what is being searched for.
  * 
  * @return {boolean} : If the value was found within the array, returns true, 
@@ -155,7 +157,7 @@ module.exports.indexOf = indexOf;
   * 
   * @param {array}: loops through the array to look through finds the unique elements
   * 
-  * @return {array}: [1,2,3,3,4,5,5,] => [1,2,3,4,5] removes the duplicates in array.
+  * @return {array}: Will create a new array with all of the duplicate values taken away
   */
   
   let unique = (array) => {
@@ -171,11 +173,12 @@ module.exports.indexOf = indexOf;
   module.exports.unique = unique;
   
   /**
-   * filter: calls a function for each element in the array, passing an argument
-   * if the function call returns true, will push onto a new array.
+   * filter: Filter will check the condition, if the condition passes
+   * will make a new array with the truthy value
    * 
-   * @param {array}: loops through the array to find the element
-   * @param {function}: calls each function to loop through array
+   * @param {array}: Array to be itereated to find the element
+   * 
+   * @param {function}: uses the each function to iterate
    * 
    * @return{array}: with the given conditions will return a new array
    *  with those conditions implemented.
@@ -192,132 +195,134 @@ module.exports.indexOf = indexOf;
    };
    
    module.exports.filter = filter;
-   
-   /**
-    * reject: calls a function for each element in array passing an argument
-    * is the inverse of filter
-    * 
-    * @param {array}: loops through the array to find the element
-    * @param {function}: calls the filter function to loop and text the array
-    * 
-    * @return {array}: returns a new array if the given condtions are false
-    */
-    
-    let reject = (array, funct) => {
-        return filter(array, (e, i, c) => {
-            return !funct(e, i, c,);
-        });
-    };
-    
-    module.exports.reject = reject;
-    
-    /**
-     * partition creates a new array of values that are true and another array 
-     * of false values, like having a filtered array and a reject array.
-     * 
-     * @param {array}: Array that the elements are being tested
-     * @param {function} : testing function being used for all array elements;
-     * 
-     * @return {array}: Returns an array of TWO arrays
-     * one array that has truthy values
-     * other array with falsey values
-     */
-     
-     let partition = (array, func) => {
-         let result = [];
-         let truth = [];
-         let fals = [];
-         for( let i = 0; i <array.length; i++){
-          if(func(array[i], i, array)){
-           truth.push_array[i];
-          } else {
-           fals.push(array[i]);
-          }
-         }return result.push(truth, fals);
-     };
-     
-     module.exports.partition = partition;
-     
-     /**
-      * map: Map calls a function for each element of the collection
-      * returns value of each function call into a new array.
-      * 
-      * @param: {Array or Object}: collection of elements to be iterated
-      * @param: {function}: function to perform over the elements within the collection
-      * 
-      * @return {Array}: New Array with elements modified by the function call
-      */
-      
-      let map = (collection, func) => {
-       let result = [];
-       each(collection, (e, i, c) =>{
-        result.push(func(e, i, c));
-       });
-       return result;
-      };
-      
-      module.exports.map = map;
-      
-      /**
-       * pluck: iterates through the array of objects
-       * returns an array with the property of each array object
-       * 
-       * @param {array}: array of objects to be iterated
-       * @param {property} : It searches for the property within each array object
-       * 
-       * @return {array}: Array with the values of its given property in each object of array.
-       */
-       
-       let pluck = (array, property) => {
-        return map(array, (e, i, c) => {
-         return e[property];
-        });
-       };
-       
-       module.exports.pluck = pluck;
-       
-       /**
-        * every: iterates through a collection to check the elements are found within a collection
-        * will return a booleon wheither the collection elements are found or not
-        * 
-        * @param {Array or Object} : collection to iterate through with each function
-        * @param {Function} : The function will test the collection element;
-        * 
-        * @return {booleon} : if there are any truthy elements are found, Will return true
-        * if there are no truthy values then it will return false;
-        */
-        
-        let every = (collection, func) => {
-         let result = true;
-         if (func === undefined){
-          each(collection, (e, i, c) => {
-           if(!e){
-            result = false;
-           }
-          });
-         } else {
-          each(collection, (e, i, c) => {
-           if(!func(e, i, c)){
-            result = false;
-           }
-          });
-         }
-         return result;
-        };
-        
-        module.exports.every = every;
 
 /**
- * some:iterates through a collection to check the elements are found within a collection
- * will return a booleon wheither the collection elements are found or not
- * (inverse of every)
+ * Reject: is the inverse of filter, which will make a new array of falsey values
  * 
- * @param {Array or Object} : collection to iterate through with each function
- * @param {Function} : The function will test the collection element;
+ * @param {array}: Array to be iterated
  * 
- * @return {booleon} : if there are any truthy elements are found, Will return false
- * if there are no truthy values then it will return true;
+ * @param {function} uses the filter function
+ * 
+ * @return {array}: Return an array with falsey values that are filtered in the array. 
+ * 
+ * 
+ */
+ 
+
+ let reject = (array, funct) => {
+   return filter(array, (e, i, c) => {
+      return !funct(e, i, c,);
+     });
+  };
+
+module.exports.reject = reject;
+ 
+/**
+ * Partition: This will return TWO arrays, one with truthy values and the other with falsey values 
+ * 
+ * @param {array}: Will use an array to be iterated
+ * @param {function}: Will be calling the each funtion to iterate
+ * 
+ * @return {array}: Will return TWO whole new array! One with truthy values and the other one with falsey values
+ */
+ 
+
+let partition = (array, func) => {
+ let result = [];
+  let truth = [];
+  let fals = [];
+ for( let i = 0; i <array.length; i++){
+  if(func(array[i], i, array)){
+  truth.push_array[i];
+ } else {
+ fals.push(array[i]);
+ }
+ }return result.push(truth, fals);
+};
+ 
+module.exports.partition = partition;
+
+/**
+ * Map: Map will put the results of called function and put the element, index, and collection into a whole new rrray
+ * 
+ * @param{collection}: Which can be an object or an array
+ * 
+ * @param {function}: will call the each function to iterate
+ * 
+ * @return{array}: a whole new array with the results of the modified array
+ */
+ 
+ 
+ let map = (collection, func) => {
+  let result = [];
+   each(collection, (e, i, c) =>{
+    result.push(func(e, i, c));
+ });
+  return result;
+ };
+
+ module.exports.map = map;
+
+/**
+ * Pluck: will return an array of the value properties
+ * 
+ * @param {collection}: can be an object or an array
+ * 
+ * @param {property}: property to return from collection
+ * 
+ * @return{array}: an array of values with the specified property
+ */
+ 
+
+let pluck = (array, property) => {
+  return map(array, (e, i, c) => {
+   return e[property];
+ });
+};
+ 
+ module.exports.pluck = pluck;
+
+/**
+ * Every: Made to return true if ALL value being passed through the function is true
+ * 
+ * @param {collection}: which can be an array or an object to be iterated
+ * 
+ * @param {function}: will call the each function to iterate the collection
+ * 
+ * @return {booleaon}: will return true if all values pass, if not false
  */ 
+ 
+ let every = (collection, func) => {
+ let result = true;
+  if (func === undefined){
+  each(collection, (e, i, c) => {
+   if(!e){
+   result = false;
+  }
+ });
+ } else {
+ each(collection, (e, i, c) => {
+ if(!func(e, i, c)){
+ result = false;
+ }
+});
+ }
+ return result;
+ };
+
+module.exports.every = every;
+
+
+/**
+ * Some: Made to return true if atleast ONE value being passed through the function is true
+ * 
+ * @param {collection}: which can be an array or an object to be iterated
+ * 
+ * @param {function}: will call the each function to iterate the collection
+ * 
+ * @return {booleaon}: will return true if atleast ONE value is passed, if not false.
+ */ 
+ 
  
  let some = (collection, func) => {
   let result = false;
@@ -339,46 +344,45 @@ module.exports.indexOf = indexOf;
  
  module.exports.some = some;
  
- /**
-  * reduce: iterates through the array into a single value and is stored within the seed.
-  * if there is no seed provided, the first index of array will be the seed
-  * 
-  * @param {array} : Array of elements to be iterated through with the function
-  * @param {function} : Function to perform onto the array and seed
-  * @param { Any Datatype} : The seed is an optional starting value to use with the first array element
-  * 
-  * @return { Any Datatype} : Depending on the seed, the result of running a function on the starting param,
-  * and the first array element with the return result.
-  * 
-  */
-  
-  let reduce = (array, func, seed) => {
-   let accumulator = seed === undefined ? 1: seed;
-   for(let i = 0; i < array.length; i++){
-    accumulator = func(accumulator, array[i], array);
-    return accumulator;
-   }
-  };
-  module.exports.reduce = reduce;
-  
 /**
- * extend: takes undefined amount of objects and turns them into an array,
- * will loop through the array of objects and copy key value pairs and will return the first object
+ * Reduce: Takes an array and transform it into a single value
  * 
- * @param {array} : array of objects to be converted by the objects that are in the parameter.
+ * @param {array}: array to be iterated
  * 
- * @return {Object} : an object of all key value pairs from all objects were inputted into the parameter.
+ * @param {function} Will test each value in the collection
+ * 
+ * @param {seed}: will be used as the previous value can be any datatype
+ * 
+ * @returns{Value}: Can be any value depending on what datatype is the seed.
+ * But will return the previous result value.
+ * 
  */
  
- let extend = (...objects) => {
-for (let i = 0; i < objects.length; i++){
-    let firstObj = objects[0];
-    let currentObj = objects[i];
-    for( let keys in currentObj){
-        firstObj[keys] = currentObj[keys];
-    }
-}
-return objects[0];
+  
+ let reduce = (array, funct, seed) =>{ 
+  let seedDefined = 0;
+  if (seed === undefined){
+      seed = array[0];
+      seedDefined = 1;
+  }
+  for (let i = seedDefined; i < array.length; i++){
+      seed = funct(seed, array[i], i);
+  }   return seed;
+};
+  module.exports.reduce = reduce;
+
+/**
+ * Extend: is used to add other object properties into one object.
+ * 
+ * @param {object}: The initial object that will take the other object properties
+ * @param {...object}: Can take as many Objects
+ * 
+ * @return {object}: will return a single object with added property of other objects
+ */
+ 
+ let extend = (object, ...objects) => {
+  Object.assign(object, ...objects);
+  return object;
 };
 
 module.exports.extend = extend;
