@@ -25,8 +25,8 @@ module.exports.each = each;
 /**
  * identity: Identity takes any value and returns that value unchanged
  *
- * @param {value} : Takes any value
- * @return{value} : The same value unchanged.
+ * @param {value} value : Takes any value
+ * @return{value} value : The same value unchanged.
  */
 
 let identity = (value) => value;
@@ -36,9 +36,9 @@ module.exports.identity = identity;
 /**
  * typeof: will check the value and return the value's datatype.
  * 
- * @param {value} : The value of what datatype that will be determined
+ * @param {value} value : The value of what datatype that will be determined
  * 
- * @return {string}: Datatype of the value as a "string"
+ * @return {string} : Datatype of the value as a "string"
  * 
  */
  
@@ -59,13 +59,14 @@ module.exports.identity = identity;
   * if there is no array or number it will return an empty array instead
   * but if there is an array it will return the first value of the array
   * 
-  * @param {array} : Array to be iterated
+  * @param {array} array : Array to be iterated
   * 
-  * @param {number} : Number of elements
+  * @param {number} num : Number of elements
   * 
   * @return {Array or first element (of any datatype)} 
-  * Will return a new array of the first value in the array
-  * 
+  * Will return a new array of the first value/number in the array
+  * if the number is negative, or array is not an array will return an empty array
+  * if the number is not a number will return with the first element of the array
   */
  
  let first = (array, num) => {
@@ -86,12 +87,14 @@ module.exports.identity = identity;
   * will return the last index array if there is no number.
   * will return the whole array if the number is greater than the array
   * 
-  * @param {array} : Array to be iterated
+  * @param {array} array : Array to be iterated
   * 
-  * @param {number} : Number of array to return
+  * @param {number} num : Number of elements
   * 
   * @return {Array}
-  * Will return a new array with the last element in the array
+  * Will return a new array with the last number elements of the the array
+  * if the number is negative or array is not an array, will return an empty array
+  * if the number is NaN, should return the last element in the array
   * 
   */
   
@@ -110,11 +113,12 @@ module.exports.identity = identity;
   module.exports.last = last;
   
   /**
-   * indexof: Will check the index placement of an array.
+   * indexOf: Its set up to loops and looks for the first occurence of value in the array, and returns it as the index
+   * If the value is not found in the array, will return as -1
    * 
-   * @param {array}: Loops through to check the position of array.
+   * @param {array} array: Loops through to check the position of array.
    * 
-   * @param {value}: any given value
+   * @param {value} value: any given value
    * 
    * @return {i or -1}: will return the index of the element 
    * if not will return -1
@@ -134,9 +138,9 @@ module.exports.indexOf = indexOf;
 /**
  * contains: Will check the if the value we're looking for is found and will return a boolean of its results.
  * 
- * @param {array}: Array where the value is being looked for.
+ * @param {array} array: Array where the value is being looked for.
  * 
- * @param {value}: Value is what is being searched for.
+ * @param {value} value: Value is what is being searched for.
  * 
  * @return {boolean} : If the value was found within the array, returns true, 
  * if not then false
@@ -152,12 +156,12 @@ module.exports.indexOf = indexOf;
  module.exports.contains = contains;
  
  /**
-  * unique: Loops through the array and grab the unique values in the array
-  * and moves it into a new array to be returned.
+  * unique: unique is set up to iterate through an array. when it iterates through the array it will pull 
+  * all of the values that are not duplicates into a new array
   * 
-  * @param {array}: loops through the array to look through finds the unique elements
+  * @param {array} array : loops through the array to look through finds the unique elements
   * 
-  * @return {array}: Will create a new array with all of the duplicate values taken away
+  * @return {array}: This returns a WHOLE new array with all of unique values in the new array. 
   */
   
   let unique = (array) => {
@@ -176,9 +180,9 @@ module.exports.indexOf = indexOf;
    * filter: Filter will check the condition, if the condition passes
    * will make a new array with the truthy value
    * 
-   * @param {array}: Array to be itereated to find the element
+   * @param {array} array: Array to be itereated to find the element
    * 
-   * @param {function}: uses the each function to iterate
+   * @param {function} func: uses the each function to iterate through each element in the array
    * 
    * @return{array}: with the given conditions will return a new array
    *  with those conditions implemented.
@@ -199,9 +203,9 @@ module.exports.indexOf = indexOf;
 /**
  * Reject: is the inverse of filter, which will make a new array of falsey values
  * 
- * @param {array}: Array to be iterated
+ * @param {array} array: Array to be iterated
  * 
- * @param {function} uses the filter function
+ * @param {function} funct: uses the filter function to test each element within the array
  * 
  * @return {array}: Return an array with falsey values that are filtered in the array. 
  * 
@@ -218,10 +222,10 @@ module.exports.indexOf = indexOf;
 module.exports.reject = reject;
  
 /**
- * Partition: This will return TWO arrays, one with truthy values and the other with falsey values 
+ * Partition: This will return ONE array, WITH TWO nested arrays one with truthy values and the other with falsey values 
  * 
- * @param {array}: Will use an array to be iterated
- * @param {function}: Will be calling the each funtion to iterate
+ * @param {array} array: Will use an array to be iterated
+ * @param {function} func: Will be calling the each funtion to iterate
  * 
  * @return {array}: Will return TWO whole new array! One with truthy values and the other one with falsey values
  */
@@ -245,9 +249,9 @@ module.exports.partition = partition;
 /**
  * Map: Map will put the results of called function and put the element, index, and collection into a whole new rrray
  * 
- * @param{collection}: Which can be an object or an array
+ * @param{collection} collection: Which can be an object or an array
  * 
- * @param {function}: will call the each function to iterate
+ * @param {function} func: will call the each function to iterate
  * 
  * @return{array}: a whole new array with the results of the modified array
  */
@@ -264,11 +268,12 @@ module.exports.partition = partition;
  module.exports.map = map;
 
 /**
- * Pluck: will return an array of the value properties
+ * Pluck: will return an array of the value properties that is found within 
+ * the given array of objects
  * 
- * @param {collection}: can be an object or an array
+ * @param {collection} array: Array of objects
  * 
- * @param {property}: property to return from collection
+ * @param {property} property: property to return from collection
  * 
  * @return{array}: an array of values with the specified property
  */
@@ -285,11 +290,13 @@ let pluck = (array, property) => {
 /**
  * Every: Made to return true if ALL value being passed through the function is true
  * 
- * @param {collection}: which can be an array or an object to be iterated
+ * @param {collection} collection: which can be an array or an object to be iterated
  * 
- * @param {function}: will call the each function to iterate the collection
+ * @param {function} func: will call the each function to iterate through each value in the collection
  * 
- * @return {booleaon}: will return true if all values pass, if not false
+ * @return {booleaon}: will return true if all values pass, if not false.
+ * But is there is no callback the function will test the element if true or false
+ * will return a boolean of its results
  */ 
  
  let every = (collection, func) => {
@@ -316,11 +323,13 @@ module.exports.every = every;
 /**
  * Some: Made to return true if atleast ONE value being passed through the function is true
  * 
- * @param {collection}: which can be an array or an object to be iterated
+ * @param {collection} collection: which can be an array or an object to be iterated
  * 
- * @param {function}: will call the each function to iterate the collection
+ * @param {function} func: will call the each function to iterate through each value in the collection
  * 
- * @return {booleaon}: will return true if atleast ONE value is passed, if not false.
+ * @return {boolean}: will return true if atleast ONE value is passed, if not false.
+ * if there is no callback given, it will test the element if true or false
+ * and return a booleon depending on the result
  */ 
  
  
@@ -347,13 +356,14 @@ module.exports.every = every;
 /**
  * Reduce: Takes an array and transform it into a single value
  * 
- * @param {array}: array to be iterated
+ * @param {array} array: array to be iterated
  * 
- * @param {function} Will test each value in the collection
+ * @param {function} funct: Will test each value in the collection
  * 
- * @param {seed}: will be used as the previous value can be any datatype
+ * @param {value} seed: will be used as the previous value / accumulator (OPTIONAL)
+ * if seed is not defined, it will used the first element of the array.
  * 
- * @returns{Value}: Can be any value depending on what datatype is the seed.
+ * @returns{Value}: Can be any value depending on what the is the seed / accumulator.
  * But will return the previous result value.
  * 
  */
@@ -374,8 +384,8 @@ module.exports.every = every;
 /**
  * Extend: is used to add other object properties into one object.
  * 
- * @param {object}: The initial object that will take the other object properties
- * @param {...object}: Can take as many Objects
+ * @param {object} object: The initial object that will take the other object properties
+ * @param {...object} ...object: Can take as many Objects
  * 
  * @return {object}: will return a single object with added property of other objects
  */
