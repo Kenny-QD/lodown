@@ -56,15 +56,15 @@ module.exports.identity = identity;
  
  /**
   * first: takes an array and a number,
+  * if there is an array it will return the first value of the array
   * if there is no array or number it will return an empty array instead
-  * but if there is an array it will return the first value of the array
   * 
   * @param {array} array : Array to be iterated
   * 
   * @param {number} num : Number of elements
   * 
   * @return {Array or first element (of any datatype)} 
-  * Will return a new array of the first value/number in the array
+  * Will return a new array of the with the given number of elements from the zero-index
   * if the number is negative, or array is not an array will return an empty array
   * if the number is not a number will return with the first element of the array
   */
@@ -92,7 +92,7 @@ module.exports.identity = identity;
   * @param {number} num : Number of elements
   * 
   * @return {Array}
-  * Will return a new array with the last number elements of the the array
+  * Will return an array or last element in the array
   * if the number is negative or array is not an array, will return an empty array
   * if the number is NaN, should return the last element in the array
   * 
@@ -182,7 +182,7 @@ module.exports.indexOf = indexOf;
    * 
    * @param {array} array: Array to be itereated to find the element
    * 
-   * @param {function} func: uses the each function to iterate through each element in the array
+   * @param {function} func: uses the each function to iterate and test the truthiness of each element in the array
    * 
    * @return{array}: with the given conditions will return a new array
    *  with those conditions implemented.
@@ -205,7 +205,7 @@ module.exports.indexOf = indexOf;
  * 
  * @param {array} array: Array to be iterated
  * 
- * @param {function} funct: uses the filter function to test each element within the array
+ * @param {function} funct: uses the filter function to test the truthiness of each element within the array
  * 
  * @return {array}: Return an array with falsey values that are filtered in the array. 
  * 
@@ -289,6 +289,8 @@ let pluck = (array, property) => {
 
 /**
  * Every: Made to return true if ALL value being passed through the function is true
+ * if there is no function given, it will test the truthy/falsey/ of every element
+ * will return true if ALL are true, if not false.
  * 
  * @param {collection} collection: which can be an array or an object to be iterated
  * 
@@ -322,6 +324,8 @@ module.exports.every = every;
 
 /**
  * Some: Made to return true if atleast ONE value being passed through the function is true
+ * if theres no function given, it will test the truthy/falsey of every element and returns true if any are 
+ * of them are true, if not false
  * 
  * @param {collection} collection: which can be an array or an object to be iterated
  * 
