@@ -60,7 +60,8 @@ module.exports.identity = identity;
   * 
   * @param {array} array : Array to be iterated to find the first value.
   * 
-  * @param {number} num : Number given to determine the first value
+  * @param {number} num : Number given to determine the amount of elements to get from first value
+  * of the array
   * 
   * @return {Array or first element (of any datatype)} 
   * Will return a new array of the with the given number of elements from the zero-index
@@ -90,7 +91,7 @@ module.exports.identity = identity;
   * 
   * @param {array} array : Array to be iterated to find the last value 
   * 
-  * @param {number} num : Number given to determine the last value
+  * @param {number} num : Number given to determine the amount of items to get from last value of the array
   * 
   * @return {Array}
   * Will return an array or last element in the array
