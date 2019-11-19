@@ -55,13 +55,12 @@ module.exports.identity = identity;
  module.exports.typeOf = typeOf;
  
  /**
-  * first: takes an array and a number,
-  * if there is an array it will return the first value of the array
-  * if there is no array or number it will return an empty array instead
+  * first: takes an array and a number, 
+  * and return that number of elements from the beginning of the array.
   * 
-  * @param {array} array : Array to be iterated
+  * @param {array} array : Array to be iterated to find the first value.
   * 
-  * @param {number} num : Number of elements
+  * @param {number} num : Number given to determine the first value
   * 
   * @return {Array or first element (of any datatype)} 
   * Will return a new array of the with the given number of elements from the zero-index
@@ -82,14 +81,16 @@ module.exports.identity = identity;
  module.exports.first = first;
  
  /**
-  * last: returns the very last element of array.
+  * last: returns the very last element of an array, or 
+  * an array starting from the last element counting back depending on the argument given
+  * 
   * if the number is negative, it will return an empty array.
   * will return the last index array if there is no number.
   * will return the whole array if the number is greater than the array
   * 
-  * @param {array} array : Array to be iterated
+  * @param {array} array : Array to be iterated to find the last value 
   * 
-  * @param {number} num : Number of elements
+  * @param {number} num : Number given to determine the last value
   * 
   * @return {Array}
   * Will return an array or last element in the array
